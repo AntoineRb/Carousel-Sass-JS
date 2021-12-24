@@ -8,39 +8,31 @@ body {
   padding-top: 2%;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  background-color: #243447;
-  padding-top: 2%;
-}
-body main .carousel {
+.carousel {
   width: 900px;
   height: 398px;
   display: flex;
   flex-direction: column;
   background-size: 100% 500px;
   margin: auto;
-  border: 4px solid whitesmoke;
+  border: 1px solid whitesmoke;
+  transition-duration: 400ms;
 }
-body main .carousel .button-control-container {
+.carousel .button-control-container {
   height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
 }
-body main .carousel .button-control-container .button-control {
+.carousel .button-control-container .button-control {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding-left: 1%;
   padding-right: 1%;
 }
-body main .carousel .button-control-container .button-control button {
+.carousel .button-control-container .button-control button {
   background: none;
   color: inherit;
   border: none;
@@ -48,25 +40,30 @@ body main .carousel .button-control-container .button-control button {
   cursor: pointer;
   outline: inherit;
 }
-body main .carousel .button-control-container .button-control button span {
+.carousel .button-control-container .button-control button span {
   color: whitesmoke;
   text-shadow: 1px 1px 1px #243447;
   font-size: 4.5rem;
   opacity: 0.5;
 }
-body main .carousel .radio-controls {
+.carousel .button-control-container .button-control button span:hover {
+  opacity: 0.8;
+  font-size: 5rem;
+  transition-duration: 500ms;
+}
+.carousel .radio-controls {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   background-color: #243447;
   opacity: 0.7;
-  padding: 0.5%;
+  padding: 0.3%;
   text-align: center;
 }
-body main .carousel .radio-controls form input {
-  width: 15px;
-  height: 15px;
+.carousel .radio-controls form input {
+  width: 10px;
+  height: 10px;
   margin: 5px;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -75,6 +72,7 @@ body main .carousel .radio-controls form input {
   font-size: 2em;
   border-radius: 50%;
   cursor: pointer;
+  transition-duration: 500ms;
 }
 
 /*# sourceMappingURL=style.css.map */

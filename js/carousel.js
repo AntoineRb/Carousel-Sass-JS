@@ -3,6 +3,8 @@ let   actualImageId  = 1;
 
 const imageSuffix    = 'jpeg'
 
+const radioCheckedColor = 'whiteSmoke';
+
 const carousel       = document.querySelector('.carousel');
 const radioBottomBar = carousel.querySelector('.radio-controls');
 const form           = radioBottomBar.querySelector('form');
@@ -13,11 +15,11 @@ function changeImage( idOfImage ) {
     carousel.style.backgroundImage = `url(assets/img/wild${idOfImage}.${imageSuffix})`;
 }
 
-function updateRadioColor( reset = false ) {
+function updateRadioColor( reset ) {
     if ( reset ) {
         document.querySelector( `#image${actualImageId}` ).style.backgroundColor = '';
     } else {
-        document.querySelector( `#image${actualImageId}` ).style.backgroundColor = 'goldenrod';
+        document.querySelector( `#image${actualImageId}` ).style.backgroundColor = radioCheckedColor;
     }
 }
 
@@ -34,7 +36,7 @@ for ( let i = 0; i < nbOfImages; i++ ) {
     form.appendChild(newRadioInput);
 }
 
-document.querySelector('#image1').style.backgroundColor = `goldenrod`;
+updateRadioColor();
 
 buttonsContainer.addEventListener('click', (e) => {
 
@@ -75,7 +77,7 @@ radioBottomBar.addEventListener('click', (e) => {
         radioClickedId     = radioClickedId.replace('image', '');
 
         updateRadioColor(true);
-        actualImageId = Number( radioClickedId ); 
+        actualImageId = radioClickedId; 
         updateRadioColor();
         changeImage(actualImageId);
     }
