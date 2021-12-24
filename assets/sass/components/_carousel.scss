@@ -1,0 +1,108 @@
+
+.carousel {
+    
+    width: $carousel-image-width;
+    height: $carousel-image-height;
+
+    display: flex;
+    flex-direction: column;
+
+    background-size: 100% 500px;
+
+    margin: auto;
+
+    overflow: hidden;
+
+    position: relative;
+
+    border: $border-design;
+
+
+    .carousel-background-image {
+        position: absolute;
+        z-index: 0;
+        transition-duration: $carousel-transition-duration;
+        .images-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: stretch;
+
+            img {
+                border-right: 2px solid $secondary-color;
+            }
+        }
+    }
+    
+
+    .button-control-container {
+        
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+
+        .button-control {
+
+            display:         flex;
+            flex-direction:  row;
+            justify-content: space-between;
+
+            padding-left:  1%;
+            padding-right: 1%;
+
+            button {
+                background: none;
+                color:      inherit;
+                border:     none;
+                font-style: inherit;
+                cursor:     pointer;
+                outline:    inherit;
+                
+                span {
+                    color:  $secondary-color;
+                    text-shadow: 1px 1px 1px $primary-color;
+                    font-size: 4.5rem;
+                    opacity: 0.5;
+                    transition-duration: $button-transition-duration;
+                }
+                span:hover {
+                    opacity: 0.8;
+                    font-size: 5rem;           
+                }
+            }
+            
+        }  
+
+    }
+
+    .radio-controls {
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: $radio-control-background;
+        opacity: $radio-control-opacity;
+        padding: 0.3%;
+        text-align: center;
+
+        form {
+            input{
+                width: 10px;
+                height: 10px;
+                margin: 5px;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                -o-appearance: none;
+                // appearance:none;
+                outline: 2px solid $radio-control-border-color;
+                // box-shadow: none;
+                font-size: 2em;
+                border-radius: 50%;
+                cursor: pointer;
+                transition-duration: $radio-control-transition-duration;
+            }
+        }        
+    }
+}
