@@ -15,8 +15,22 @@ body {
   flex-direction: column;
   background-size: 100% 500px;
   margin: auto;
+  overflow: hidden;
+  position: relative;
   border: 1px solid whitesmoke;
-  transition-duration: 400ms;
+}
+.carousel .carousel-background-image {
+  position: absolute;
+  z-index: 0;
+  transition-duration: 1s;
+}
+.carousel .carousel-background-image .images-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+}
+.carousel .carousel-background-image .images-container img {
+  border-right: 2px solid whitesmoke;
 }
 .carousel .button-control-container {
   height: 500px;
@@ -45,11 +59,11 @@ body {
   text-shadow: 1px 1px 1px #243447;
   font-size: 4.5rem;
   opacity: 0.5;
+  transition-duration: 500ms;
 }
 .carousel .button-control-container .button-control button span:hover {
   opacity: 0.8;
   font-size: 5rem;
-  transition-duration: 500ms;
 }
 .carousel .radio-controls {
   position: absolute;
