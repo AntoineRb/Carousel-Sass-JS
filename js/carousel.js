@@ -41,59 +41,42 @@ buttonsContainer.addEventListener('click', (e) => {
     let elementName = e.target.className;
     //recuperate the good name of class
     elementName     = elementName.replace('material-icons ', '');
-    // console.log(elementName);
 
     if ( elementName == 'button-previous' ) {
         
-        updateRadioColor(true);
-        
+        updateRadioColor(true);     
         if ( actualImageId == 1 ) {
             actualImageId = nbOfImages;
         } else {
             actualImageId--;
         }
-
         updateRadioColor();
     
     } else if ( elementName == 'button-next' ) {
         
         updateRadioColor(true);
-
         if ( actualImageId == nbOfImages ) {
             actualImageId = 1;
         } else {
             actualImageId++;
         }
-
         updateRadioColor();
-
     }
-
     changeImage(actualImageId);
-    // console.log(actualImageId);
 });
 
 
 
 radioBottomBar.addEventListener('click', (e) => {
-
-
 //  Si la target est a l'attribe type de type 'radio'
     if ( e.target.type == 'radio' ) {
+
         let radioClickedId = e.target.id;
-        updateRadioColor(true);
         radioClickedId     = radioClickedId.replace('image', '');
 
-        
-        actualImageId = Number( radioClickedId );
-        
-        changeImage(actualImageId);
+        updateRadioColor(true);
+        actualImageId = Number( radioClickedId ); 
         updateRadioColor();
-
+        changeImage(actualImageId);
     }
-
-    
-    
-    console.log(actualImageId);
-
 });

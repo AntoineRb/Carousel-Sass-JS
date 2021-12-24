@@ -7,6 +7,16 @@ body {
   background-color: #243447;
   padding-top: 2%;
 }
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #243447;
+  padding-top: 2%;
+}
 body main .carousel {
   width: 900px;
   height: 398px;
