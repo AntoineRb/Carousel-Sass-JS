@@ -1,0 +1,97 @@
+$primary-color: #243447;
+$secondary-color: whitesmoke;
+$carouselImageWidth: 900px;
+$carouselImageHeight: 398px;
+
+* {
+   padding: 0;
+   margin:  0;    
+}
+body {
+    background-color: 	$primary-color;
+    padding-top: 2%;
+
+    main {
+
+        .carousel {
+           
+            width: $carouselImageWidth;
+            height: $carouselImageHeight;
+
+            display: flex;
+            flex-direction: column;
+
+            background-size: 100% 500px;
+
+            margin: auto;
+
+            border: 4px solid $secondary-color;
+            
+            .button-control-container {
+
+                height: 500px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: relative;
+
+                .button-control {
+
+                    display:         flex;
+                    flex-direction:  row;
+                    justify-content: space-between;
+
+                    padding-left:  1%;
+                    padding-right: 1%;
+
+                    button {
+                        background: none;
+                        color:      inherit;
+                        border:     none;
+                        font-style: inherit;
+                        cursor:     pointer;
+                        outline:    inherit;
+
+                        span {
+                            color:  $secondary-color;
+                            text-shadow: 1px 1px 1px $primary-color;
+                            font-size: 4.5rem;
+                            opacity: 0.5;
+                        }
+                        
+                    }
+                    
+                }  
+    
+            }
+
+            .radio-controls {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: $primary-color;
+                opacity: 0.7;
+                padding: 0.5%;
+                text-align: center;
+
+                form {
+                    input{
+                        width: 15px;
+                        height: 15px;
+                        margin: 5px;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        -o-appearance: none;
+                        // appearance:none;
+                        outline: 2px solid $secondary-color;
+                        // box-shadow: none;
+                        font-size: 2em;
+                        border-radius: 50%;
+                        cursor: pointer;
+                    }
+                }        
+            }
+        }
+    }
+}

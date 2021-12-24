@@ -1,0 +1,70 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #243447;
+  padding-top: 2%;
+}
+body main .carousel {
+  width: 900px;
+  height: 398px;
+  display: flex;
+  flex-direction: column;
+  background-size: 100% 500px;
+  margin: auto;
+  border: 4px solid whitesmoke;
+}
+body main .carousel .button-control-container {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+body main .carousel .button-control-container .button-control {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+body main .carousel .button-control-container .button-control button {
+  background: none;
+  color: inherit;
+  border: none;
+  font-style: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+body main .carousel .button-control-container .button-control button span {
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px #243447;
+  font-size: 4.5rem;
+  opacity: 0.5;
+}
+body main .carousel .radio-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #243447;
+  opacity: 0.7;
+  padding: 0.5%;
+  text-align: center;
+}
+body main .carousel .radio-controls form input {
+  width: 15px;
+  height: 15px;
+  margin: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  outline: 2px solid whitesmoke;
+  font-size: 2em;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */
