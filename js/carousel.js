@@ -16,6 +16,9 @@ const radioBottomBar     = carousel.querySelector('.radio-controls');
 const form               = radioBottomBar.querySelector('form');
 const buttonsContainer   = document.querySelector('.button-control-container');
 
+//style property preset to prevent latence from Browser
+carouselBackground.style.left = '0px';
+
 function addImagesToCarousel() {
     for ( let i = 0; i < nbOfImages; i++ ) {
 
@@ -31,9 +34,21 @@ function addImagesToCarousel() {
 }
 addImagesToCarousel();
 
+function displayNextImage( ImageWidth, imagesContainerSize) {
+    
+    if ( !( Math.abs(carouselLeftPosition - ImageWidth) == imagesContainerSize ) ) {
 
-function changeImage( idOfImage ) {
-    carousel.style.backgroundImage = `url(assets/img/${typeOfImages + idOfImage}.${imageSuffix})`;
+        carouselLeftPosition -= ImageWidth;
+        carouselBackground.style.left = `${carouselLeftPosition}px`;
+
+    } else {
+
+        carouselLeftPosition = 0;
+        carouselBackground.style.left = `0px`;
+
+    }
+
+    changeLeftPositionOfImagesContainer( carouselLeftPosition, ImageWidth);
 }
 
 function updateRadioColor( reset ) {
@@ -71,8 +86,7 @@ buttonsContainer.addEventListener('click', (e) => {
     elementName     = elementName.replace('material-icons ', '');
 
     // Result of addition all images width
-    const widthOfAllImages = imagesContainer.offsetWidth;
-    // To get the size of One image, we can devide widthOfAllImages with nbOfImages
+    const widthOfAllImages     = imagesContainer.offsetWidth;
     const individualImageWidth = widthOfAllImages / nbOfImages;
 
     if ( elementName == 'button-previous' ) {
@@ -80,58 +94,57 @@ buttonsContainer.addEventListener('click', (e) => {
         updateRadioColor(true);
 
         if ( !( carouselLeftPosition == 0 ) ) {
+
             carouselLeftPosition += individualImageWidth;
+
         } else {
+
             carouselLeftPosition -= ( widthOfAllImages - individualImageWidth );
+
         }
 
         carouselBackground.style.left = `${carouselLeftPosition}px`;
 
         changeLeftPositionOfImagesContainer( carouselLeftPosition, individualImageWidth);
+       
         updateRadioColor();
-        console.log(carouselLeftPosition);
     
     } else if ( elementName == 'button-next' ) {
         
         updateRadioColor(true);
-        
-
-        if ( !( Math.abs(carouselLeftPosition - individualImageWidth) == widthOfAllImages ) ) {
-            carouselLeftPosition -= individualImageWidth;
-            carouselBackground.style.left = `${carouselLeftPosition}px`;
-        } else {
-            carouselLeftPosition = 0;
-            carouselBackground.style.left = `0px`;
-        }
-        changeLeftPositionOfImagesContainer( carouselLeftPosition, individualImageWidth);
-        updateRadioColor();
-
+        displayNextImage( individualImageWidth, widthOfAllImages);
+        updateRadioColor( );
         console.log(carouselLeftPosition);
     }
 });
 
 
 radioBottomBar.addEventListener('click', (e) => {
-//  Si la target est a l'attribe type de type 'radio'
+
     if ( e.target.type == 'radio' ) {
 
         updateRadioColor(true);
-        //  A opti
-        // Result of addition all images width
-        const widthOfAllImages = imagesContainer.offsetWidth;
-        // To get the size of One image, we can devide widthOfAllImages with nbOfImages
+
+        const widthOfAllImages     = imagesContainer.offsetWidth;
         const individualImageWidth = widthOfAllImages / nbOfImages;
 
-        let radioClickedId = e.target.id;
-        radioClickedId     = Number( radioClickedId.replace('image', '') );
-        actualImageId = radioClickedId;
-        const newLeftPosition = individualImageWidth * (radioClickedId - 1) ;
+        let radioClickedId    = e.target.id;
+        radioClickedId        = Number( radioClickedId.replace('image', '') ); //Remove image from id to keep the number
+        actualImageId         = radioClickedId;
+        carouselLeftPosition  = -individualImageWidth * (radioClickedId - 1); // Set a new position in X axis with the top left corner for origin
 
-        carouselBackground.style.left = `${-newLeftPosition}px`;
-
-        console.log(newLeftPosition);
+        carouselBackground.style.left = `${carouselLeftPosition}px`;
         
         updateRadioColor();
-    
     }
 });
+
+
+// change image in every 3.5 seconds
+setInterval( () => {
+    const widthOfAllImages     = imagesContainer.offsetWidth;
+    const individualImageWidth = widthOfAllImages / nbOfImages;
+    updateRadioColor(true);
+    displayNextImage( individualImageWidth, widthOfAllImages);
+    updateRadioColor( );
+}, 3500);
