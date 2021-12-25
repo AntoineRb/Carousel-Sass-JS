@@ -11,12 +11,31 @@
 
     margin: auto;
 
+    overflow: hidden;
+
+    position: relative;
+
     border: $border-design;
 
-    transition-duration: 400ms;
-    
-    .button-control-container {
 
+    .carousel-background-image {
+        position: absolute;
+        z-index: 0;
+        transition-duration: $carousel-transition-duration;
+        .images-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: stretch;
+
+            img {
+                border-right: 2px solid $secondary-color;
+            }
+        }
+    }
+    
+
+    .button-control-container {
+        
         height: 500px;
         display: flex;
         flex-direction: column;
@@ -39,17 +58,17 @@
                 font-style: inherit;
                 cursor:     pointer;
                 outline:    inherit;
-
+                
                 span {
                     color:  $secondary-color;
                     text-shadow: 1px 1px 1px $primary-color;
                     font-size: 4.5rem;
                     opacity: 0.5;
+                    transition-duration: $button-transition-duration;
                 }
                 span:hover {
                     opacity: 0.8;
-                    font-size: 5rem;
-                    transition-duration: $button-transition-duration;
+                    font-size: 5rem;           
                 }
             }
             

@@ -1,18 +1,54 @@
-const nbOfImages     = 5;
-let   actualImageId  = 1;
+const nbOfImages         = 5;
+let   actualImageId      = 1;
 
-const imageSuffix    = 'jpeg'
+let carouselLeftPosition = 0;
 
-const radioCheckedColor = 'whiteSmoke';
+const typeOfImages       = 'wild';
+const imagesAlt          = 'Wild life picture'
+const imageSuffix        = 'jpeg';
 
-const carousel       = document.querySelector('.carousel');
-const radioBottomBar = carousel.querySelector('.radio-controls');
-const form           = radioBottomBar.querySelector('form');
+const radioCheckedColor  = 'whiteSmoke';
 
+const carousel           = document.querySelector('.carousel');
+const carouselBackground = carousel.querySelector('.carousel-background-image')
+const imagesContainer    = carousel.querySelector('.images-container');
+const radioBottomBar     = carousel.querySelector('.radio-controls');
+const form               = radioBottomBar.querySelector('form');
 const buttonsContainer   = document.querySelector('.button-control-container');
 
-function changeImage( idOfImage ) {
-    carousel.style.backgroundImage = `url(assets/img/wild${idOfImage}.${imageSuffix})`;
+//style property preset to prevent latence from Browser
+carouselBackground.style.left = '0px';
+
+function addImagesToCarousel() {
+    for ( let i = 0; i < nbOfImages; i++ ) {
+
+        const newFigure = document.createElement('figure');
+        const newImage  = document.createElement('img');   
+
+        newImage.src    = `assets/img/${typeOfImages + ( i + 1 )}.${imageSuffix}`;
+        newImage.alt    = imagesAlt;
+
+        newFigure.appendChild(newImage);
+        imagesContainer.appendChild(newFigure);
+    }
+}
+addImagesToCarousel();
+
+function displayNextImage( ImageWidth, imagesContainerSize) {
+    
+    if ( !( Math.abs(carouselLeftPosition - ImageWidth) == imagesContainerSize ) ) {
+
+        carouselLeftPosition -= ImageWidth;
+        carouselBackground.style.left = `${carouselLeftPosition}px`;
+
+    } else {
+
+        carouselLeftPosition = 0;
+        carouselBackground.style.left = `0px`;
+
+    }
+
+    changeLeftPositionOfImagesContainer( carouselLeftPosition, ImageWidth);
 }
 
 function updateRadioColor( reset ) {
@@ -23,8 +59,13 @@ function updateRadioColor( reset ) {
     }
 }
 
-changeImage(actualImageId);
-
+// Change the images positions when the client press radios controls or buttons
+function changeLeftPositionOfImagesContainer( leftPosition, imageWidth ) {
+    const newLeftPosition = Math.abs( leftPosition / imageWidth ) + 1;
+    if ( !(newLeftPosition == 0) ) {
+        actualImageId = newLeftPosition;
+    }
+}
 
 for ( let i = 0; i < nbOfImages; i++ ) {
 
@@ -44,41 +85,66 @@ buttonsContainer.addEventListener('click', (e) => {
     //recuperate the good name of class
     elementName     = elementName.replace('material-icons ', '');
 
+    // Result of addition all images width
+    const widthOfAllImages     = imagesContainer.offsetWidth;
+    const individualImageWidth = widthOfAllImages / nbOfImages;
+
     if ( elementName == 'button-previous' ) {
         
-        updateRadioColor(true);     
-        if ( actualImageId == 1 ) {
-            actualImageId = nbOfImages;
+        updateRadioColor(true);
+
+        if ( !( carouselLeftPosition == 0 ) ) {
+
+            carouselLeftPosition += individualImageWidth;
+
         } else {
-            actualImageId--;
+
+            carouselLeftPosition -= ( widthOfAllImages - individualImageWidth );
+
         }
+
+        carouselBackground.style.left = `${carouselLeftPosition}px`;
+
+        changeLeftPositionOfImagesContainer( carouselLeftPosition, individualImageWidth);
+       
         updateRadioColor();
     
     } else if ( elementName == 'button-next' ) {
         
         updateRadioColor(true);
-        if ( actualImageId == nbOfImages ) {
-            actualImageId = 1;
-        } else {
-            actualImageId++;
-        }
-        updateRadioColor();
+        displayNextImage( individualImageWidth, widthOfAllImages);
+        updateRadioColor( );
+        console.log(carouselLeftPosition);
     }
-    changeImage(actualImageId);
 });
-
 
 
 radioBottomBar.addEventListener('click', (e) => {
-//  Si la target est a l'attribe type de type 'radio'
+
     if ( e.target.type == 'radio' ) {
 
-        let radioClickedId = e.target.id;
-        radioClickedId     = radioClickedId.replace('image', '');
-
         updateRadioColor(true);
-        actualImageId = radioClickedId; 
+
+        const widthOfAllImages     = imagesContainer.offsetWidth;
+        const individualImageWidth = widthOfAllImages / nbOfImages;
+
+        let radioClickedId    = e.target.id;
+        radioClickedId        = Number( radioClickedId.replace('image', '') ); //Remove image from id to keep the number
+        actualImageId         = radioClickedId;
+        carouselLeftPosition  = -individualImageWidth * (radioClickedId - 1); // Set a new position in X axis with the top left corner for origin
+
+        carouselBackground.style.left = `${carouselLeftPosition}px`;
+        
         updateRadioColor();
-        changeImage(actualImageId);
     }
 });
+
+
+// change image in every 3.5 seconds
+setInterval( () => {
+    const widthOfAllImages     = imagesContainer.offsetWidth;
+    const individualImageWidth = widthOfAllImages / nbOfImages;
+    updateRadioColor(true);
+    displayNextImage( individualImageWidth, widthOfAllImages);
+    updateRadioColor( );
+}, 3500);
