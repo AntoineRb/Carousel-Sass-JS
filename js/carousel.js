@@ -3,7 +3,10 @@ let   actualImageId      = 1;
 
 let carouselLeftPosition = 0;
 
-let buttonClicked = false; // work on this
+let carouselTimeInterval = 3500;
+
+let buttonClicked = false; 
+
 
 const typeOfImages       = 'wild';
 const imagesAlt          = 'Wild life picture'
@@ -67,12 +70,6 @@ function changeLeftPositionOfImagesContainer( leftPosition, imageWidth ) {
     if ( !(newLeftPosition == 0) ) {
         actualImageId = newLeftPosition;
     }
-}
-
-function resetAnimationTime( btnClicked ) {
-    if ( btnClicked ) return false;
-    setTimeout(100);
-    return true;
 }
 
 for ( let i = 0; i < nbOfImages; i++ ) {
