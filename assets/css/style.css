@@ -1,3 +1,15 @@
+/*
+    * Carousel design settings *
+*/
+/*
+    * Arrows buttons (Previous, Next) settings *
+*/
+/*
+    * Bottom radio buttons settings *
+*/
+/*
+    * Animations times settings *
+*/
 * {
   padding: 0;
   margin: 0;
@@ -65,7 +77,7 @@ body {
   opacity: 0.8;
   font-size: 5rem;
 }
-.carousel .radio-controls {
+.carousel .images-controls {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -75,18 +87,21 @@ body {
   padding: 0.3%;
   text-align: center;
 }
-.carousel .radio-controls form input {
-  width: 10px;
-  height: 10px;
+.carousel .images-controls .bottom-button-control button {
+  background: none;
+  color: inherit;
+  border: none;
+  font-style: inherit;
+  width: 14px;
+  height: 14px;
   margin: 5px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -o-appearance: none;
   outline: 2px solid whitesmoke;
-  font-size: 2em;
   border-radius: 50%;
   cursor: pointer;
   transition-duration: 500ms;
+}
+.carousel .images-controls .bottom-button-control .actual-btn-control {
+  background-color: whitesmoke;
 }
 
 /*# sourceMappingURL=style.css.map */

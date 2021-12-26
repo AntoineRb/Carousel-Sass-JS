@@ -60,15 +60,16 @@
                 outline:    inherit;
                 
                 span {
-                    color:  $secondary-color;
-                    text-shadow: 1px 1px 1px $primary-color;
-                    font-size: 4.5rem;
-                    opacity: 0.5;
-                    transition-duration: $button-transition-duration;
+                    color:  $buttons-arrows-contol-color;
+                    text-shadow: $buttons-arrows-contol-shadow;
+                    font-size: $buttons-arrows-contol-size;
+                    opacity: $buttons-arrows-contol-opacity;
+
+                    transition-duration: $buttons-arrows-transition-duration;
                 }
                 span:hover {
-                    opacity: 0.8;
-                    font-size: 5rem;           
+                    opacity: $buttons-arrows-contol-opacity-hover;
+                    font-size: $buttons-arrows-contol-size-hover;           
                 }
             }
             
@@ -76,33 +77,36 @@
 
     }
 
-    .radio-controls {
+    .images-controls {
 
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: $radio-control-background;
-        opacity: $radio-control-opacity;
+        background-color: $btn-control-background;
+        opacity: $btn-control-opacity;
         padding: 0.3%;
         text-align: center;
 
-        form {
-            input{
-                width: 10px;
-                height: 10px;
-                margin: 5px;
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                -o-appearance: none;
-                // appearance:none;
-                outline: 2px solid $radio-control-border-color;
-                // box-shadow: none;
-                font-size: 2em;
-                border-radius: 50%;
+        .bottom-button-control{
+
+            button {
+
+                background: none;
+                color:      inherit;
+                border:     none;
+                font-style: inherit;
+                width: $btn-control-width;
+                height: $btn-control-height;
+                margin: $btn-control-margin;
+                outline: $btn-control-outline;
+                border-radius: $btn-control-border-radius;
                 cursor: pointer;
-                transition-duration: $radio-control-transition-duration;
-            }
-        }        
+                transition-duration: $btn-control-transition-duration;
+            } 
+            .actual-btn-control {
+                background-color: $actual-btn-control-color;
+            }        
+        }
     }
 }
