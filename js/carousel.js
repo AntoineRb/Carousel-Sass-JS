@@ -3,8 +3,6 @@ let   actualImageId      = 1;
 
 let carouselLeftPosition = 0;
 
-let carouselTimeInterval = 3500;
-
 let buttonClicked = false; // work on this
 
 const typeOfImages       = 'wild';
