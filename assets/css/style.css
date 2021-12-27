@@ -78,30 +78,31 @@ body {
   font-size: 5rem;
 }
 .carousel .images-controls {
+  height: 25px;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #243447;
-  opacity: 0.7;
+  background-color: none;
+  opacity: 1;
   padding: 0.3%;
   text-align: center;
 }
 .carousel .images-controls .bottom-button-control button {
-  background: none;
+  background-color: rgba(255, 255, 255, 0.5);
   color: inherit;
   border: none;
-  font-style: inherit;
-  width: 14px;
-  height: 14px;
-  margin: 5px;
-  outline: 2px solid whitesmoke;
-  border-radius: 50%;
+  width: 30px;
+  height: 4px;
+  margin: 3px;
+  border-radius: 0%;
   cursor: pointer;
   transition-duration: 500ms;
+  box-shadow: 0.5px 0.5px 0.5px grey;
 }
 .carousel .images-controls .bottom-button-control .actual-btn-control {
   background-color: whitesmoke;
+  width: 35px;
 }
 
 /*# sourceMappingURL=style.css.map */
