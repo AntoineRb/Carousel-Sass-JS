@@ -1,17 +1,17 @@
 $primary-color:   #243447;
 $secondary-color: whitesmoke;
 
-/*
-    * Carousel design settings *
-*/
+
+ //   Carousel design settings
+
 $carousel-image-width:  900px;
 $carousel-image-height: 398px;
 
 $border-design: 1px solid $secondary-color;
 
-/*
-    * Arrows buttons (Previous, Next) settings *
-*/
+
+//    Arrows buttons (Previous, Next) settings
+
 $buttons-arrows-contol-color:              $secondary-color;
 $buttons-arrows-contol-shadow:             1px 1px 1px $primary-color;
 $buttons-arrows-contol-size:               4.5rem;
@@ -19,9 +19,9 @@ $buttons-arrows-contol-size-hover:         5rem;
 $buttons-arrows-contol-opacity:            0.5;
 $buttons-arrows-contol-opacity-hover:      0.8;
 
-/*
-    * Bottom radio buttons settings *
-*/
+
+//    Bottom radio buttons settings
+
 $btn-control-width:               30px;
 $btn-control-height:              4px;
 $btn-control-margin:              3px;
@@ -31,13 +31,14 @@ $btn-control-background:          none;
 $btn-control-border:              none;
 $btn-control-border-radius:       0%;
 $btn-control-color:               rgba(255,255,255,.5);
+$btn-control-shadow:              0.5px 0.5px 0.5px rgba(255,255,255,.3);
 
-$actual-btn-control-color:        $secondary-color;
-$actual-btn-control-width:        35px;
+$actual-btn-control-color:        rgb(255, 255, 255);
+$actual-btn-control-width:        30px;
 
-/*
-    * Animations times settings *
-*/
+
+//      Animations times settings 
+
 $carousel-transition-duration:       1s;
 $buttons-arrows-transition-duration: 500ms;
 $btn-control-transition-duration:    500ms;
