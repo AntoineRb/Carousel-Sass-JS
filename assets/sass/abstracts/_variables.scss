@@ -22,15 +22,18 @@ $buttons-arrows-contol-opacity-hover:      0.8;
 /*
     * Bottom radio buttons settings *
 */
-$btn-control-width:               14px;
-$btn-control-height:              14px;
-$btn-control-margin:              5px;
+$btn-control-width:               30px;
+$btn-control-height:              4px;
+$btn-control-margin:              3px;
 $btn-control-border-radius:       5px;
-$btn-control-opacity:             0.7;
-$btn-control-background:          $primary-color;
-$btn-control-outline:             2px solid $secondary-color;
-$btn-control-border-radius:       50%;
+$btn-control-opacity:             1;
+$btn-control-background:          none;
+$btn-control-border:              none;
+$btn-control-border-radius:       0%;
+$btn-control-color:               rgba(255,255,255,.5);
+
 $actual-btn-control-color:        $secondary-color;
+$actual-btn-control-width:        35px;
 
 /*
     * Animations times settings *
