@@ -3,18 +3,12 @@
     
     width: $carousel-image-width;
     height: $carousel-image-height;
-
     display: flex;
     flex-direction: column;
-
     background-size: 100% 500px;
-
     margin: auto;
-
     overflow: hidden;
-
     position: relative;
-
     border: $border-design;
 
 
@@ -79,6 +73,7 @@
 
     .images-controls {
 
+        height: 25px;
         position: absolute;
         bottom: 0;
         left: 0;
@@ -92,20 +87,21 @@
 
             button {
 
-                background: none;
+                background-color: $btn-control-color;
                 color:      inherit;
-                border:     none;
-                font-style: inherit;
-                width: $btn-control-width;
-                height: $btn-control-height;
-                margin: $btn-control-margin;
-                outline: $btn-control-outline;
+                border:     $btn-control-border;
+                width:      $btn-control-width;
+                height:     $btn-control-height;
+                margin:     $btn-control-margin;
                 border-radius: $btn-control-border-radius;
                 cursor: pointer;
                 transition-duration: $btn-control-transition-duration;
+
+                box-shadow: 0.5px 0.5px 0.5px grey;
             } 
             .actual-btn-control {
                 background-color: $actual-btn-control-color;
+                width: $actual-btn-control-width;
             }        
         }
     }
