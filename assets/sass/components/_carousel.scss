@@ -97,7 +97,7 @@
                 cursor: pointer;
                 transition-duration: $btn-control-transition-duration;
 
-                box-shadow: 0.5px 0.5px 0.5px grey;
+                box-shadow: $btn-control-shadow;
             } 
             .actual-btn-control {
                 background-color: $actual-btn-control-color;
